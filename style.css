@@ -1,0 +1,200 @@
+/* 1. Variáveis: tema claro */
+:root {
+  --fundo: #fff8ec;
+  --card: #ffffff;
+  --texto: #1a0f20;
+  --destaque: #c74300;
+  --sombra: #00699a;
+}
+
+/* Tema escuro: as mesmas variáveis com outros valores */
+.dark {
+  --fundo: #0f0415;
+  --card: #190d20;
+  --texto: #f2ecf5;
+  --destaque: #f55600;
+  --sombra: #d5e51b;
+}
+
+/* No tema escuro, os textos secundários ficam mais claros para serem legíveis */
+.dark .bio {
+  color: #d9d1dd;
+}
+.dark .rodape,
+.dark .endereco {
+  color: #a79dac;
+}
+
+/* 2. Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 3. Body */
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: background 0.2s;
+}
+
+/* 4. Container: uma coluna centralizada */
+.container {
+  max-width: 384px;
+  margin: 0 auto;
+  padding: 64px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 5. Perfil */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.avatar {
+  width: 104px;
+  border: 2px solid var(--texto);
+  border-radius: 4px;
+  box-shadow: 6px 6px 0 var(--sombra);
+}
+
+h1 {
+  font-family: 'Bungee', sans-serif;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 1.02;
+  text-transform: uppercase;
+  text-shadow: -2px 0 0 #f92434, 2px 0 0 #00d0d9;
+}
+
+.usuario {
+  margin-top: -8px; /* margem negativa aproxima o @usuario do nome */
+  color: var(--sombra);
+  font-weight: 700;
+}
+
+.bio {
+  max-width: 300px;
+  color: #3a2f40;
+}
+
+/* 6. Botão principal */
+.principal {
+  display: block;
+  margin-bottom: 24px;
+  padding: 16px 24px;
+  background: var(--destaque);
+  color: var(--fundo);
+  border: 2px solid var(--texto);
+  border-radius: 4px;
+  box-shadow: 6px 6px 0 var(--sombra);
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* No hover o botão "sobe"; no clique (active) ele "afunda" */
+.principal:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--sombra);
+}
+.principal:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0 var(--sombra);
+}
+
+/* 7. Lista de links: menu de jogo */
+.links {
+  list-style: none;
+  background: var(--card);
+  border: 2px solid #41304b;
+  border-radius: 4px;
+}
+
+/* Nome à esquerda e endereço à direita, na mesma linha */
+.links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid #41304b;
+  color: var(--texto);
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Endereço menor e em cinza; no hover e no foco acompanha a cor da linha */
+.endereco {
+  color: #5c5163;
+  font-size: 14px;
+  font-weight: 400;
+}
+a:hover .endereco,
+a:focus-visible .endereco {
+  color: var(--fundo);
+}
+.links a:hover,
+.links a:focus-visible {
+  background: var(--destaque);
+  color: var(--fundo);
+}
+.links a:focus-visible {
+  outline: 3px solid var(--sombra);
+  outline-offset: -4px;
+}
+
+/* 8. Rodapé (em coluna, alinhado à esquerda) e botão de tema */
+.rodape {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  color: #5c5163;
+  font-size: 14px;
+}
+
+.botao-tema {
+  padding: 10px 16px;
+  background: var(--fundo);
+  color: var(--texto);
+  border: 2px solid var(--texto);
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 var(--sombra);
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.botao-tema:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--sombra);
+}
+
+/* Foco visível no teclado para os dois botões */
+.principal:focus-visible,
+.botao-tema:focus-visible {
+  outline: 3px solid var(--sombra);
+  outline-offset: 3px;
+}
+
+/* Celular: nome menor para caber na tela */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 40px;
+  }
+}
